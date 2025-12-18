@@ -19,8 +19,12 @@ class Minitest::Test
   end
 
   def with_headers
-    Mailkick.stub(:headers, true) do
+    previous_value = Mailkick.headers
+    begin
+      Mailkick.headers = true
       yield
+    ensure
+      Mailkick.headers = previous_value
     end
   end
 end
