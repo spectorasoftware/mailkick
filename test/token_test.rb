@@ -7,6 +7,11 @@ class TokenTest < Minitest::Test
     assert_equal expected, Mailkick.secret_token.unpack1("h*")
   end
 
+  def test_key_generator_hash_digest_class
+    # ensure Rails application key generator hash digest class unchanged
+    assert_equal OpenSSL::Digest::SHA256, Rails.application.key_generator.instance_variable_get(:@key_generator).instance_variable_get(:@hash_digest_class)
+  end
+
   def test_message_verifier
     message = "W251bGwsMSwiVXNlciIsInNhbGVzIl0=--68e6af4bc88e9910a912da36f779c349c4ac661d"
     assert_equal [nil, 1, "User", "sales"], Mailkick.message_verifier.verify(message)

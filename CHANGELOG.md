@@ -1,3 +1,7 @@
+## 2.1.0 (unreleased)
+
+- Fixed change to key generator hash digest class
+
 ## 2.0.0 (2025-06-23)
 
 See the [upgrade notes](https://github.com/ankane/mailkick?tab=readme-ov-file#20)
